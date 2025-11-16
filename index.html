@@ -1,183 +1,723 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sanbai Energy – PowerHome</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <title>Sanbai Energy – PowerHome</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ESTILOS INLINE -->
+  <style>
+    :root {
+      --orange: #fa6d14;
+      --gray-light: #f8f8f8;
+      --gray: #eeeeee;
+      --ink: #1f2933;
+      --white: #ffffff;
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter",
+        "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: #ffffff;
+      line-height: 1.5;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      z-index: 20;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0.7rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      align-items: center;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      opacity: 0.85;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+    }
+
+    .nav-cta {
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      background: var(--orange);
+      color: white;
+      font-weight: 500;
+    }
+
+    /* BOTONES */
+    .btn-primary,
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.85rem 1.6rem;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: white;
+      box-shadow: 0 12px 30px rgba(250, 109, 20, 0.35);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 1.5px solid rgba(255, 255, 255, 0.8);
+    }
+
+    /* SECCIONES GENERALES */
+    section {
+      padding: 5.5rem 1.25rem;
+    }
+
+    .section-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    h1,
+    h2,
+    h3 {
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    /* HERO */
+    .hero {
+      height: 90vh;
+      min-height: 560px;
+      background-image: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.35),
+          rgba(0, 0, 0, 0.65)
+        ),
+        url("/assets/herosanbai.png");
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding-top: 4.5rem;
+    }
+
+    .hero-content {
+      max-width: 640px;
+      padding: 0 1.25rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      opacity: 0.9;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* BENEFICIO */
+    .beneficio {
+      background: #ffffff;
+    }
+
+    .beneficio-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .beneficio-text h2 {
+      margin-bottom: 0.75rem;
+    }
+
+    .beneficio-text p {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .beneficio-text ul {
+      list-style: none;
+    }
+
+    .beneficio-text li {
+      position: relative;
+      padding-left: 1.2rem;
+      margin-bottom: 0.4rem;
+      font-size: 0.95rem;
+    }
+
+    .beneficio-text li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--orange);
+    }
+
+    .beneficio-img img {
+      width: 100%;
+      border-radius: 18px;
+      box-shadow: 0 18px 35px rgba(15, 23, 42, 0.25);
+      object-fit: cover;
+    }
+
+    /* PRODUCTOS */
+    .productos {
+      background: var(--gray-light);
+      text-align: center;
+    }
+
+    .productos-grid {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    /* COMPARATIVA */
+    .comparativa-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .tabla {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .tabla h4 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .tabla ul {
+      list-style: none;
+      font-size: 0.95rem;
+    }
+
+    .tabla li {
+      position: relative;
+      padding-left: 1.1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .tabla li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--orange);
+    }
+
+    .comparativa-img img {
+      width: 100%;
+      border-radius: 18px;
+      box-shadow: 0 18px 35px rgba(15, 23, 42, 0.25);
+      object-fit: cover;
+    }
+
+    /* CÓMO FUNCIONA */
+    .funciona {
+      background: #ffffff;
+      text-align: center;
+    }
+
+    .funciona-grid {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .step {
+      background: var(--gray-light);
+      padding: 1.25rem;
+      border-radius: 14px;
+      text-align: left;
+    }
+
+    .step h4 {
+      margin-bottom: 0.4rem;
+      font-size: 1rem;
+    }
+
+    .step p {
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    /* TESTIMONIAL VISUAL */
+    .testimonial {
+      height: 60vh;
+      min-height: 420px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+
+    .testimonial::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        circle at center,
+        rgba(0, 0, 0, 0.45),
+        rgba(0, 0, 0, 0.8)
+      );
+    }
+
+    .testimonial-content {
+      position: relative;
+      max-width: 640px;
+      padding: 0 1.25rem;
+    }
+
+    .testimonial h2 {
+      font-size: clamp(1.8rem, 3vw, 2.3rem);
+    }
+
+    /* FAQ */
+    .faq {
+      background: #ffffff;
+    }
+
+    .faq h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .faq-list {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      border-radius: 10px;
+      background: #f3f4f6;
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+    }
+
+    .faq-q {
+      width: 100%;
+      text-align: left;
+      padding: 0.9rem 1rem;
+      border: none;
+      background: transparent;
+      font-size: 0.96rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-q span {
+      font-weight: 500;
+    }
+
+    .faq-icon {
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: transform 0.2s ease;
+    }
+
+    .faq-a {
+      display: none;
+      padding: 0 1rem 0.9rem;
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .faq-item.open .faq-a {
+      display: block;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    /* CTA FINAL */
+    .cta-final {
+      background-image: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.4),
+          rgba(0, 0, 0, 0.8)
+        ),
+        url("/assets/herosanbai-2.png");
+      background-size: cover;
+      background-position: center;
+      text-align: center;
+      color: white;
+      padding: 5.5rem 1.25rem;
+    }
+
+    .cta-final h2 {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-final p {
+      margin-bottom: 1.5rem;
+      opacity: 0.9;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .beneficio-grid,
+      .comparativa-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .productos-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .funciona-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .navbar {
+        position: static;
+      }
+
+      .hero {
+        padding-top: 3rem;
+        height: auto;
+      }
+
+      section {
+        padding: 3.5rem 1.25rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+      }
+
+      .funciona-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-
-<!-- NAVBAR -->
-<header class="navbar">
-    <div class="nav-container">
-        <div class="logo">Sanbai Energy</div>
-        <nav>
-            <a href="#productos">Productos</a>
-            <a href="#funciona">Cómo funciona</a>
-            <a href="#faq">FAQ</a>
-            <a href="#contacto" class="nav-cta">Cotizar</a>
-        </nav>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="nav-inner">
+      <div class="logo">Sanbai Energy</div>
+      <nav class="nav-links">
+        <a href="#productos">Productos</a>
+        <a href="#funciona">Cómo funciona</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contacto" class="nav-cta">Cotizar</a>
+      </nav>
     </div>
-</header>
+  </header>
 
-<!-- HERO -->
-<section class="hero" style="background-image:url('herosanbai.png');">
+  <!-- HERO -->
+  <section class="hero">
     <div class="hero-content">
-        <h1>Respaldo inteligente para tu hogar</h1>
-        <p>Autonomía energética premium para hogares de alto nivel.</p>
-        <div class="hero-buttons">
-            <a href="#productos" class="btn-primary">Conocé PowerHome</a>
-            <a href="#contacto" class="btn-secondary">Solicitar cotización</a>
-        </div>
+      <h1>Respaldo inteligente para tu hogar</h1>
+      <p>Autonomía energética premium para hogares de alto nivel.</p>
+      <div class="hero-buttons">
+        <a href="#productos" class="btn-primary">Conocé PowerHome</a>
+        <a href="#contacto" class="btn-secondary">Solicitar cotización</a>
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- SECCIÓN BENEFICIO -->
-<section class="beneficio">
-    <div class="beneficio-text">
+  <!-- BENEFICIO -->
+  <section class="beneficio">
+    <div class="section-inner beneficio-grid">
+      <div class="beneficio-text">
         <h2>Tu casa sigue funcionando aunque todo se apague</h2>
-        <p>Los sistemas PowerHome aseguran autonomía silenciosa, sin combustible y con diseño premium.</p>
+        <p>
+          Los sistemas PowerHome aseguran autonomía silenciosa, sin combustible
+          y con diseño premium.
+        </p>
         <ul>
-            <li>Autonomía de 6 a 50 horas</li>
-            <li>Silencioso y sin mantenimiento</li>
-            <li>Ideal para barrios privados</li>
-            <li>Instalación rápida y estética</li>
+          <li>Autonomía de 6 a 50 horas</li>
+          <li>Silencioso y sin mantenimiento</li>
+          <li>Ideal para barrios privados</li>
+          <li>Instalación rápida y estética</li>
         </ul>
+      </div>
+      <div class="beneficio-img">
+        <img src="/assets/sanbai-6.png" alt="Sanbai Energy exterior" />
+      </div>
     </div>
-    <div class="beneficio-img">
-        <img src="/assets/sanbai 6.png" alt="Sanbai Energy PowerHome">
-    </div>
-</section>
+  </section>
 
-<!-- PRODUCTOS -->
-<section id="productos" class="productos">
-    <h2>Elegí tu nivel de autonomía energética</h2>
+  <!-- PRODUCTOS -->
+  <section id="productos" class="productos">
+    <div class="section-inner">
+      <h2>Elegí tu nivel de autonomía energética</h2>
 
-    <div class="productos-grid">
-
+      <div class="productos-grid">
         <div class="card">
-            <img src="/assets/Sanbai Energy 1.png" alt="">
-            <h3>PowerHome Base</h3>
-            <p>Respaldo desde la red. Capacidades: 5, 10 o 15 kWh.</p>
+          <img src="/assets/sanbai-energy-1.png" alt="PowerHome Base" />
+          <h3>PowerHome Base</h3>
+          <p>Respaldo desde la red. Capacidades: 5, 10 o 15 kWh.</p>
         </div>
 
         <div class="card">
-            <img src="/assets/sanbai 4.png" alt="">
-            <h3>PowerHome Hybrid</h3>
-            <p>Solar + batería para ahorro diario y autonomía extendida.</p>
+          <img src="/assets/sanbai-4.png" alt="PowerHome Hybrid" />
+          <h3>PowerHome Hybrid</h3>
+          <p>Solar + batería para ahorro diario y autonomía extendida.</p>
         </div>
 
         <div class="card">
-            <img src="/assets/sanbai 5.png" alt="">
-            <h3>PowerHome Premium</h3>
-            <p>20 a 30 kWh con inversor trifásico. Autonomía total.</p>
+          <img src="/assets/sanbai-5.png" alt="PowerHome Premium" />
+          <h3>PowerHome Premium</h3>
+          <p>20 a 30 kWh con inversor trifásico. Autonomía total.</p>
         </div>
-
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- COMPARATIVA -->
-<section class="comparativa">
-    <div class="comparativa-text">
+  <!-- COMPARATIVA -->
+  <section class="comparativa">
+    <div class="section-inner comparativa-grid">
+      <div class="comparativa-text">
         <h2>Batería de respaldo vs generador tradicional</h2>
+        <p>La experiencia del hogar cambia por completo.</p>
 
         <div class="tabla">
-            <div>
-                <h4>Batería Sanbai</h4>
-                <ul>
-                    <li>Silenciosa</li>
-                    <li>Sin combustible</li>
-                    <li>Sin humo</li>
-                    <li>Arranque automático</li>
-                    <li>Apta interior y exterior</li>
-                </ul>
-            </div>
+          <div>
+            <h4>Batería Sanbai</h4>
+            <ul>
+              <li>Silenciosa</li>
+              <li>Sin combustible</li>
+              <li>Sin humo</li>
+              <li>Arranque automático</li>
+              <li>Apta interior y exterior</li>
+            </ul>
+          </div>
 
-            <div>
-                <h4>Generador</h4>
-                <ul>
-                    <li>Ruidoso</li>
-                    <li>Usa combustible</li>
-                    <li>Genera humo y olor</li>
-                    <li>Arranque manual</li>
-                    <li>No apto interiores</li>
-                </ul>
-            </div>
+          <div>
+            <h4>Generador</h4>
+            <ul>
+              <li>Ruidoso</li>
+              <li>Usa combustible</li>
+              <li>Genera humo y olor</li>
+              <li>Arranque manual</li>
+              <li>No apto interiores</li>
+            </ul>
+          </div>
         </div>
+      </div>
+
+      <div class="comparativa-img">
+        <img src="/assets/sanbai-11.png" alt="Instalación Sanbai Energy" />
+      </div>
     </div>
+  </section>
 
-    <div class="comparativa-img">
-        <img src="/assets/sanbai 11.png" alt="">
+  <!-- CÓMO FUNCIONA -->
+  <section id="funciona" class="funciona">
+    <div class="section-inner">
+      <h2>Cómo funciona PowerHome</h2>
+      <div class="funciona-grid">
+        <div class="step">
+          <h4>1. Carga desde la red</h4>
+          <p>La batería mantiene un nivel óptimo de carga automáticamente.</p>
+        </div>
+        <div class="step">
+          <h4>2. Detecta cortes</h4>
+          <p>El sistema identifica caídas o fluctuaciones instantáneamente.</p>
+        </div>
+        <div class="step">
+          <h4>3. Activa el respaldo</h4>
+          <p>La batería toma el control en milisegundos sin que notes el cambio.</p>
+        </div>
+        <div class="step">
+          <h4>4. Suministra energía</h4>
+          <p>Tu hogar sigue funcionando, incluso durante horas de corte.</p>
+        </div>
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- CÓMO FUNCIONA -->
-<section id="funciona" class="funciona">
-    <h2>Cómo funciona PowerHome</h2>
-    <div class="funciona-grid">
-        <div class="step">
-            <h4>1. Carga desde la red</h4>
-            <p>La batería mantiene un nivel óptimo de carga automáticamente.</p>
-        </div>
-
-        <div class="step">
-            <h4>2. Detecta cortes</h4>
-            <p>El sistema identifica caídas o fluctuaciones instantáneamente.</p>
-        </div>
-
-        <div class="step">
-            <h4>3. Activa el respaldo</h4>
-            <p>La batería toma el control en milisegundos sin que notes el cambio.</p>
-        </div>
-
-        <div class="step">
-            <h4>4. Suministra energía</h4>
-            <p>Tu hogar sigue funcionando, incluso durante horas de corte.</p>
-        </div>
-    </div>
-</section>
-
-<!-- TESTIMONIO VISUAL -->
-<section class="testimonial" style="background-image:url('/assets/sanbai 6.png')">
+  <!-- TESTIMONIAL VISUAL -->
+  <section
+    class="testimonial"
+    style="background-image:url('/assets/sanbai-6-night.png');"
+  >
     <div class="testimonial-content">
-        <h2>Tu casa sigue funcionando aunque todo se apague</h2>
+      <h2>Tu casa sigue funcionando aunque todo se apague.</h2>
     </div>
-</section>
+  </section>
 
-<!-- FAQ -->
-<section id="faq" class="faq">
-    <h2>Preguntas frecuentes</h2>
+  <!-- FAQ -->
+  <section id="faq" class="faq">
+    <div class="section-inner">
+      <h2>Preguntas frecuentes</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">
+            <span>¿Cuánta autonomía necesito para mi hogar?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            Depende de las cargas críticas que quieras respaldar: heladera,
+            iluminación, internet, bombas y climatización básica. PowerHome
+            puede configurarse entre 5 y 30 kWh.
+          </div>
+        </div>
 
-    <div class="faq-item">
-        <button class="faq-q">¿Cuánta autonomía necesito para mi hogar?</button>
-        <div class="faq-a">Depende de tus cargas críticas: heladera, luces, internet, climatización, etc.</div>
+        <div class="faq-item">
+          <button class="faq-q">
+            <span>¿Puedo instalarlo sin paneles solares?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            Sí. PowerHome Base funciona solo con la red eléctrica y se recarga
+            automáticamente. Podés añadir paneles solares más adelante.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            <span>¿Hace ruido o necesita combustible?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            No. Es completamente silencioso, no utiliza combustible y no genera
+            humo ni olores, a diferencia de un generador tradicional.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            <span>¿Requiere mantenimiento?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            La batería LFP tiene una vida útil de años y no requiere
+            mantenimiento periódico. Sanbai ofrece servicio postventa y
+            monitoreo opcional.
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="faq-item">
-        <button class="faq-q">¿Puedo instalarlo sin paneles solares?</button>
-        <div class="faq-a">Sí. PowerHome Base funciona solo con la red eléctrica.</div>
+  <!-- CTA FINAL -->
+  <section id="contacto" class="cta-final">
+    <div class="section-inner">
+      <h2>Autonomía energética para tu hogar</h2>
+      <p>Instalación certificada. Soporte local. Seguridad garantizada.</p>
+      <a href="mailto:contacto@sanbai.com.ar" class="btn-primary"
+        >Quiero cotizar mi sistema</a
+      >
     </div>
+  </section>
 
-    <div class="faq-item">
-        <button class="faq-q">¿Hace ruido?</button>
-        <div class="faq-a">No. Es completamente silenciosa, ideal para interiores.</div>
-    </div>
-
-    <div class="faq-item">
-        <button class="faq-q">¿Requiere mantenimiento?</button>
-        <div class="faq-a">No requiere mantenimiento periódico ni combustible.</div>
-    </div>
-
-</section>
-
-<!-- CTA FINAL -->
-<section id="contacto" class="cta-final" style="background-image:url('/assets/herosanbai 2.png')">
-    <h2>Autonomía energética para tu hogar</h2>
-    <p>Instalación certificada. Soporte local. Seguridad garantizada.</p>
-    <a href="#" class="btn-primary">Quiero cotizar mi sistema</a>
-</section>
-
-<script src="main.js"></script>
+  <!-- JS FAQ -->
+  <script>
+    document.querySelectorAll(".faq-q").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        const item = btn.parentElement;
+        item.classList.toggle("open");
+      });
+    });
+  </script>
 </body>
 </html>
