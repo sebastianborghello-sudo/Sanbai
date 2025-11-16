@@ -82,6 +82,58 @@
     }
     footer{padding:2rem 0;color:#64748b;font-size:.9rem}
     footer .container{display:flex;flex-direction:column;gap:.4rem}
+  /* FAQ acordeón */
+#faq .faq-item {
+  background: var(--sb-card);
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.8rem;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
+}
+
+#faq .faq-item[open] {
+  border-color: var(--sb-orange);
+}
+
+#faq summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-weight: 600;
+  color: var(--sb-ink);
+}
+
+#faq summary::-webkit-details-marker {
+  display: none;
+}
+
+#faq .faq-title {
+  margin: 0;
+  font-size: 1rem;
+}
+
+#faq .faq-icon {
+  font-size: 1.2rem;
+  color: var(--sb-muted);
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+#faq .faq-item[open] .faq-icon {
+  transform: rotate(90deg);
+}
+
+#faq .faq-body {
+  margin-top: 0.6rem;
+  color: #475569;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
   </style>
 </head>
 <body>
@@ -259,83 +311,160 @@
   <div class="container">
     <h2>Preguntas frecuentes</h2>
 
-    <div class="card">
-      <h3>¿Requiere mantenimiento la batería?</h3>
-      <p>No. Las baterías LFP son selladas, no tienen partes móviles y no consumen combustible. Solo se recomienda una revisión visual anual por parte del instalador.</p>
-    </div>
+    <details class="faq-item">
+      <summary>
+        <span class="faq-title">¿Requiere mantenimiento la batería?</span>
+        <span class="faq-icon">›</span>
+      </summary>
+      <div class="faq-body">
+        <p>No. Las baterías LFP son selladas, no tienen partes móviles y no consumen combustible. Solo se recomienda una revisión visual anual por parte del instalador.</p>
+      </div>
+    </details>
 
-    <div class="card">
-      <h3>¿Qué pasa si llueve, graniza o hace mucho calor?</h3>
-      <p>La batería cuenta con certificación IP66, preparada para exterior y condiciones climáticas intensas. Si luego sumás paneles solares, están diseñados bajo normas internacionales para resistir granizo y vientos fuertes.</p>
-    </div>
+    <details class="faq-item">
+      <summary>
+        <span class="faq-title">¿Qué pasa si llueve, graniza o hace mucho calor?</span>
+        <span class="faq-icon">›</span>
+      </summary>
+      <div class="faq-body">
+        <p>La batería cuenta con certificación IP66, preparada para exterior y condiciones climáticas intensas. Si luego sumás paneles solares, están diseñados bajo normas internacionales para resistir granizo y vientos fuertes.</p>
+      </div>
+    </details>
 
-    <div class="card">
-      <h3>¿Qué autonomía voy a tener?</h3>
-      <p>Depende de los consumos conectados. Un módulo de 5 kWh suele cubrir cargas esenciales por varias horas. Si tu hogar tiene mayor demanda, el sistema se dimensiona con más capacidad.</p>
-    </div>
+    <details class="faq-item">
+      <summary>
+        <span class="faq-title">¿Qué autonomía voy a tener?</span>
+        <span class="faq-icon">›</span>
+      </summary>
+      <div class="faq-body">
+        <p>Depende de los consumos conectados. Un módulo de 5 kWh suele cubrir cargas esenciales por varias horas. Si tu hogar tiene mayor demanda, el sistema se dimensiona con más capacidad o más módulos.</p>
+      </div>
+    </details>
 
-    <div class="card">
-      <h3>¿Hace ruido?</h3>
-      <p>No. Las baterías no tienen motor ni ventilación forzada. Son prácticamente silenciosas, ideales para uso residencial.</p>
-    </div>
+    <details class="faq-item">
+      <summary>
+        <span class="faq-title">¿Hace ruido?</span>
+        <span class="faq-icon">›</span>
+      </summary>
+      <div class="faq-body">
+        <p>No. Las baterías no tienen motor ni combustión. Son prácticamente silenciosas, ideales para uso residencial.</p>
+      </div>
+    </details>
 
-    <div class="card">
-      <h3>¿Qué pasa si se corta la luz?</h3>
-      <p>El sistema conmuta automáticamente en milisegundos. Es tan rápido que el Wi‑Fi, la computadora o la TV suelen seguir funcionando sin que lo notes.</p>
-    </div>
+    <details class="faq-item">
+      <summary>
+        <span class="faq-title">¿Qué pasa si se corta la luz?</span>
+        <span class="faq-icon">›</span>
+      </summary>
+      <div class="faq-body">
+        <p>El sistema conmuta automáticamente en milisegundos. Es tan rápido que el Wi-Fi, la computadora o la TV suelen seguir funcionando sin que lo notes.</p>
+      </div>
+    </details>
 
-    <div class="card">
-      <h3>¿Puedo empezar sin paneles solares?</h3>
-      <p>Sí. Podés comenzar solo con la batería de respaldo y agregar paneles más adelante sin reemplazar el sistema.</p>
-    </div>
+    <details class="faq-item">
+      <summary>
+        <span class="faq-title">¿Puedo empezar sin paneles solares?</span>
+        <span class="faq-icon">›</span>
+      </summary>
+      <div class="faq-body">
+        <p>Sí. Podés comenzar solo con la batería de respaldo y agregar paneles más adelante sin reemplazar el sistema.</p>
+      </div>
+    </details>
 
-    <div class="card">
-      <h3>¿Cuánto espacio ocupa?</h3>
-      <p>El módulo estándar requiere aproximadamente el espacio de un termotanque eléctrico vertical. Puede instalarse en exterior o interior techado, según la recomendación del instalador.</p>
-    </div>
+    <details class="faq-item">
+      <summary>
+        <span class="faq-title">¿Cuánto espacio ocupa?</span>
+        <span class="faq-icon">›</span>
+      </summary>
+      <div class="faq-body">
+        <p>El módulo estándar requiere aproximadamente el espacio de un termotanque eléctrico vertical. Puede instalarse en exterior o interior techado, según la recomendación del instalador.</p>
+      </div>
+    </details>
 
-    <div class="card">
-      <h3>¿Puedo usar el sistema para aire acondicionado?</h3>
-      <p>Sí, siempre que la potencia de los equipos esté dentro de los límites del inversor y la batería. Para consumos altos en frío/calor, sugerimos configuraciones Energy Hybrid o Energy Pro.</p>
-    </div>
+    <details class="faq-item">
+      <summary>
+        <span class="faq-title">¿Puedo usar el sistema para aire acondicionado?</span>
+        <span class="faq-icon">›</span>
+      </summary>
+      <div class="faq-body">
+        <p>Sí, siempre que la potencia de los equipos esté dentro de los límites del inversor y la batería. Para consumos altos en frío/calor, sugerimos configuraciones Energy Hybrid o Energy Pro.</p>
+      </div>
+    </details>
 
-    <div class="card">
-      <h3>¿Cuánto aumenta la factura al cargar la batería desde la red?</h3>
-      <p>El consumo adicional depende de cuánta energía reponga el sistema. En la mayoría de los casos, el impacto es bajo porque la batería solo repone lo usado durante cortes o picos. Además, puede configurarse para cargar en horarios de tarifa más baja.</p>
-    </div>
+    <details class="faq-item">
+      <summary>
+        <span class="faq-title">¿Cuánto aumenta la factura al cargar la batería desde la red?</span>
+        <span class="faq-icon">›</span>
+      </summary>
+      <div class="faq-body">
+        <p>El consumo adicional depende de cuánta energía reponga el sistema. En la mayoría de los casos, el impacto es bajo porque la batería solo repone lo usado durante cortes o picos, y puede configurarse para cargar en horarios de tarifa más baja.</p>
+      </div>
+    </details>
 
-    <div class="card">
-      <h3>¿Cuál es la vida útil de la batería?</h3>
-      <p>Las baterías LFP tienen una vida útil típica de 10 a 15 años, con miles de ciclos de carga y descarga. Mantienen un buen nivel de capacidad incluso después de años de uso.</p>
-    </div>
+    <details class="faq-item">
+      <summary>
+        <span class="faq-title">¿Cuál es la vida útil de la batería?</span>
+        <span class="faq-icon">›</span>
+      </summary>
+      <div class="faq-body">
+        <p>Las baterías LFP tienen una vida útil típica de 10 a 15 años, con miles de ciclos de carga y descarga. Mantienen un buen nivel de capacidad incluso después de años de uso.</p>
+      </div>
+    </details>
 
-    <div class="card">
-      <h3>¿Puedo llevarme el sistema si me mudo?</h3>
-      <p>Sí. El sistema puede desinstalarse y reinstalarse en la nueva vivienda, siempre mediante un instalador certificado.</p>
-    </div>
+    <details class="faq-item">
+      <summary>
+        <span class="faq-title">¿Puedo llevarme el sistema si me mudo?</span>
+        <span class="faq-icon">›</span>
+      </summary>
+      <div class="faq-body">
+        <p>Sí. El sistema puede desinstalarse y reinstalarse en la nueva vivienda, siempre mediante un instalador certificado.</p>
+      </div>
+    </details>
 
-    <div class="card">
-      <h3>¿Necesito permisos especiales?</h3>
-      <p>Para la modalidad solo respaldo, generalmente no. Si sumás paneles solares, puede requerirse una habilitación eléctrica o trámite según la normativa local.</p>
-    </div>
+    <details class="faq-item">
+      <summary>
+        <span class="faq-title">¿Necesito permisos especiales?</span>
+        <span class="faq-icon">›</span>
+      </summary>
+      <div class="faq-body">
+        <p>Para la modalidad solo respaldo, generalmente no. Si sumás paneles solares, puede requerirse una habilitación eléctrica o trámite según la normativa local.</p>
+      </div>
+    </details>
 
-    <div class="card">
-      <h3>¿El sistema puede sobrecargarse o ser peligroso?</h3>
-      <p>No. El sistema incluye protecciones contra sobrecarga, sobrecalentamiento y cortocircuito. La química LFP es una de las más seguras del mercado residencial.</p>
-    </div>
+    <details class="faq-item">
+      <summary>
+        <span class="faq-title">¿El sistema puede sobrecargarse o ser peligroso?</span>
+        <span class="faq-icon">›</span>
+      </summary>
+      <div class="faq-body">
+        <p>No. El sistema incluye protecciones contra sobrecarga, sobrecalentamiento y cortocircuito. La química LFP es una de las más seguras del mercado residencial.</p>
+      </div>
+    </details>
 
-    <div class="card">
-      <h3>¿Qué pasa con los consumos altos en verano?</h3>
-      <p>Podemos dimensionar la instalación para que alimente solo cargas críticas (heladera, Wi‑Fi, luces y algunos aires) o aumentar módulos de batería según tu necesidad.</p>
-    </div>
+    <details class="faq-item">
+      <summary>
+        <span class="faq-title">¿Qué pasa con los consumos altos en verano?</span>
+        <span class="faq-icon">›</span>
+      </summary>
+      <div class="faq-body">
+        <p>Podemos dimensionar la instalación para que alimente solo cargas críticas (heladera, Wi-Fi, luces y algunos aires) o aumentar módulos de batería según tu necesidad.</p>
+      </div>
+    </details>
 
-    <div class="card">
-      <h3>¿Cómo se compara el costo total frente a un grupo electrógeno?</h3>
-      <p>A largo plazo, un sistema de baterías suele ser más conveniente: no consume combustible, casi no requiere mantenimiento, no hace ruido y es mucho más cómodo de usar. Además, si sumás solar, podés reducir tu factura de energía.</p>
-    </div>
+    <details class="faq-item">
+      <summary>
+        <span class="faq-title">¿Cómo se compara el costo total frente a un grupo electrógeno?</span>
+        <span class="faq-icon">›</span>
+      </summary>
+      <div class="faq-body">
+        <p>A largo plazo, un sistema de baterías suele ser más conveniente: no consume combustible, casi no requiere mantenimiento, no hace ruido y es mucho más cómodo de usar. Además, si sumás solar, podés reducir tu factura de energía.</p>
+      </div>
+    </details>
 
   </div>
 </section>
+
+  
 
 <section>
   <div class="container cta">
