@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sanbai Energy – Energía inteligente, sin interrupciones</title>
+  <meta name="description" content="Soluciones residenciales de respaldo de energía y sistemas solares híbridos con baterías modulares LFP. Instalación rápida, monitoreo desde app y planes escalables." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sb-orange:#fa6d14;
+      --sb-ink:#0f172a;
+      --sb-text:#334155;
+      --sb-muted:#94a3b8;
+      --sb-bg:#f8fafc;
+      --sb-card:#ffffff;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--sb-bg);color:var(--sb-text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif}
+    img{max-width:100%;display:block}
+    a{color:var(--sb-orange);text-decoration:none}
+    ul{padding-left:1.2rem}
+    .container{width:min(1120px,92vw);margin-inline:auto}
+    .btn{display:inline-flex;align-items:center;gap:.6rem;background:var(--sb-orange);color:#fff;padding:.9rem 1.2rem;border-radius:14px;font-weight:700;box-shadow:0 10px 22px rgba(250,109,20,.18);transition:.2s;border:none;cursor:pointer}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 12px 26px rgba(250,109,20,.24)}
+    .btn.outline{background:transparent;color:var(--sb-ink);border:2px solid var(--sb-ink);box-shadow:none}
+    .chip{display:inline-block;padding:.35rem .7rem;border-radius:999px;background:#0f172a0d;color:var(--sb-ink);font-weight:600;font-size:.9rem}
+    header{position:sticky;top:0;backdrop-filter:saturate(180%) blur(8px);background:rgba(248,250,252,.9);border-bottom:1px solid #e2e8f0;z-index:40}
+    header .row{display:flex;align-items:center;justify-content:space-between;padding:.8rem 0}
+    .brand{display:flex;align-items:center;gap:.7rem}
+    .brand svg{height:28px}
+    nav a{margin-left:1.2rem;color:var(--sb-ink);font-weight:600}
+    nav a.btn{margin-left:1.6rem}
+    /* hero */
+    .hero{position:relative;padding:clamp(3rem,7vw,6rem) 0}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(1.2rem,3vw,2.2rem);align-items:center}
+    .hero h1{font-size:clamp(2rem,4.8vw,3.6rem);line-height:1.05;color:var(--sb-ink);margin:0 0 1rem}
+    .hero p{font-size:clamp(1rem,1.4vw,1.125rem);color:#475569;max-width:56ch}
+    .hero .actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.2rem}
+    .hero-figure{border-radius:20px;overflow:hidden;box-shadow:0 22px 50px rgba(2,6,23,.18);background:#020617}
+    .badgebar{display:flex;gap:.6rem;margin-top:1rem;flex-wrap:wrap}
+    /* sections */
+    section{padding:clamp(2.5rem,6vw,4.5rem) 0}
+    h2{color:var(--sb-ink);margin:0 0 1rem;font-size:1.8rem}
+    h3{color:var(--sb-ink);margin:.2rem 0 .6rem;font-size:1.15rem}
+    p.small{font-size:.94rem;color:#64748b}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .card{background:var(--sb-card);border:1px solid #e2e8f0;border-radius:18px;padding:1.4rem;box-shadow:0 8px 24px rgba(2,6,23,.06)}
+    .card p{margin:0;color:#475569}
+    .check{display:flex;gap:.7rem;align-items:flex-start;margin:.45rem 0}
+    .check svg{flex:0 0 22px}
+    .comparison{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
+    .comparison-box{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:1rem;text-align:left}
+    .comparison-box h4{margin:.2rem 0;color:var(--sb-ink)}
+    .comparison-box p{margin:.2rem 0;color:#475569;font-size:.95rem}
+    .specs{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .spec{background:var(--sb-card);border:1px solid #e2e8f0;border-radius:16px;padding:1rem}
+    .spec h4{margin:.2rem 0;color:var(--sb-ink)}
+    /* pricing */
+    .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .plan{background:#fff;border:1px solid #e2e8f0;border-radius:20px;padding:1.2rem;position:relative}
+    .plan.highlight{border-color:var(--sb-orange);box-shadow:0 14px 36px rgba(250,109,20,.18)}
+    .price{font-size:2rem;color:var(--sb-ink);font-weight:800;margin:.3rem 0}
+    .muted{color:var(--sb-muted);font-size:.95rem}
+    .plan ul{margin:.6rem 0 0;padding-left:1.1rem;font-size:.95rem;color:#475569}
+    /* FAQ */
+    #faq .card{margin-bottom:1rem}
+    /* CTA stripe */
+    .cta{background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%);color:#e2e8f0;border-radius:20px;padding:2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .cta h3{margin:.2rem 0;color:#fff}
+    /* contact */
+    #contacto .card form label{font-size:.95rem;color:#0f172a;display:block}
+    #contacto input,#contacto textarea{width:100%;padding:.8rem;border:1px solid #e2e8f0;border-radius:10px;font-family:inherit;font-size:.95rem}
+    #contacto textarea{resize:vertical}
+    /* responsive */
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns:1fr}
+      .cards,.pricing,.specs,.comparison{grid-template-columns:1fr}
+      nav{display:none}
+    }
+    footer{padding:2rem 0;color:#64748b;font-size:.9rem}
+    footer .container{display:flex;flex-direction:column;gap:.4rem}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container row">
+    <div class="brand">
+      <!-- Logo Sanbai -->
+      <svg viewBox="0 0 611 298" width="36" aria-hidden="true"><path fill="var(--sb-orange)" d="M610.4,101.4C535.7,31.8,415.1,0,305.4,0C136.7,0,60.1,64,57.2,110.9C53.6,169.7,163,214.7,278.2,214.7 c98.3,0,158.7-32.9,161.2-62.2c3.1-36.9-52-53.9-52-53.9s53.8,58.6-63.6,78.6c-80.4,13.9-184.8-22.7-180.3-82.8 C149.4,60.9,237.9,27.5,345,27.5c168,0,256.3,71,256.3,71L610.4,101.4z M5.9,186.3c74.7,69.6,195.3,101.4,305,101.4 c168.7,0,245.3-64,248.2-110.9c3.6-58.8-105.8-103.8-221-103.8c-98.3,0-158.7,32.9-161.2,62.2c-3.1,36.9,52,53.9,52,53.9 s-53.8-58.6,63.6-78.6c80.4-13.9,184.8,22.7,180.3,82.8c-5.9,33.4-94.4,66.8-201.4,66.8C162.7,259.9,74.4,188.9,74.4,188.9 L5.9,186.3z"/></svg>
+      <strong>Sanbai Energy</strong>
+    </div>
+    <nav>
+      <a href="#producto">Producto</a>
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#planes">Planes</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contacto" class="btn" style="padding:.55rem 1rem">Consultar</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="chip">MVP • Respaldo domiciliario inteligente</span>
+      <h1>Energía inteligente,<br>sin interrupciones</h1>
+      <p>Sanbai Energy es un sistema de <strong>batería de respaldo para el hogar</strong>. Se carga automáticamente desde la red y entra en acción en milisegundos cuando se corta la luz, sin ruidos, sin combustible y sin que tengas que hacer nada.</p>
+      <div class="actions">
+        <a href="#planes" class="btn">Ver planes</a>
+        <a href="#contacto" class="btn outline">Quiero una cotización</a>
+      </div>
+      <div class="badgebar">
+        <span class="chip">Batería LFP segura</span>
+        <span class="chip">Instalación rápida</span>
+        <span class="chip">Listo para sumar paneles</span>
+      </div>
+    </div>
+    <div class="hero-figure" aria-label="Mockup de batería junto a casa moderna">
+      <!-- Reemplazar con la URL del render de casa + batería sin paneles -->
+      <img src="assets/herosanbai.jpg" alt="Sanbai Energy – batería residencial instalada en el exterior de una casa moderna" />
+    </div>
+  </div>
+</section>
+
+<section id="como-funciona">
+  <div class="container">
+    <h2>Cómo funciona</h2>
+    <p>Para quien no es técnico, Sanbai Energy funciona como un <strong>“seguro de energía”</strong>. La batería se carga desde la red eléctrica en horarios convenientes y queda en espera. Cuando se corta la luz, el sistema conmuta automáticamente en milisegundos y mantiene encendidos los equipos que definamos: heladera, Wi‑Fi, iluminación, computadoras, etc.</p>
+    <p style="margin-top:.6rem">No hay que salir a encender nada, no hay olor a combustible, no hay humo ni ruido. El sistema trabaja en segundo plano y se puede monitorear desde el celular.</p>
+
+    <h3 style="margin-top:1.5rem">Comparado con otras soluciones</h3>
+    <div class="comparison">
+      <div class="comparison-box">
+        <h4>Sanbai Energy (batería LFP)</h4>
+        <p><strong>Silenciosa, automática y limpia.</strong> Sin combustible, sin gases y sin mantenimiento complejo.</p>
+        <p>Escalable: empezás con 5 kWh y podés crecer según tu consumo.</p>
+      </div>
+      <div class="comparison-box">
+        <h4>Grupo electrógeno</h4>
+        <p>Motor a combustión que <strong>hace ruido</strong>, genera gases y requiere combustible, cambios de aceite y arranque manual.</p>
+        <p>Ocupación de espacio, olor, almacenamiento de nafta o gasoil.</p>
+      </div>
+      <div class="comparison-box">
+        <h4>UPS tradicional</h4>
+        <p>Diseñado para computadoras o equipos puntuales. Autonomía corta (minutos u horas) y poca escalabilidad para todo un hogar.</p>
+        <p>No está pensado como solución central de la casa.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:1.5rem">Beneficios para tu hogar</h3>
+    <ul style="margin-top:.4rem;line-height:1.7">
+      <li><strong>Continuidad total</strong>: evita perder alimentos, conexión o trabajo en medio de un corte.</li>
+      <li><strong>Silencio absoluto</strong>: sin motores, sin humo y sin vibraciones.</li>
+      <li><strong>Seguridad y eficiencia</strong>: tecnología LFP, con protecciones contra sobrecarga, sobrecalentamiento y cortocircuitos.</li>
+      <li><strong>Instalación estética</strong>: diseño compacto, similar al tamaño de un termotanque mural.</li>
+      <li><strong>Preparado para el futuro</strong>: podés agregar paneles solares más adelante, sin cambiar el sistema.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="producto">
+  <div class="container">
+    <h2>Soluciones Sanbai Energy</h2>
+    <p class="small">Tres configuraciones pensadas como escalones: empezás por el respaldo básico y podés crecer a híbrido y avanzado, según tu consumo.</p>
+    <div class="cards" style="margin-top:1rem">
+      <div class="card">
+        <h3>Energy One (Backup)</h3>
+        <p>La opción más simple para continuidad de servicios esenciales (heladera, Wi‑Fi, luces, TV).</p>
+        <div class="check"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>Conmutación automática (~10 ms).</span></div>
+        <div class="check"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>Capacidad inicial 5 kWh (expandible).</span></div>
+        <div class="check"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>Batería LFP (segura y de larga vida).</span></div>
+      </div>
+      <div class="card">
+        <h3>Energy Hybrid (Híbrido)</h3>
+        <p>Todo lo de Backup + integración con paneles solares para reducir tu factura y ganar autonomía.</p>
+        <div class="check"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>Carga desde red o solar según tarifa y clima.</span></div>
+        <div class="check"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>App con monitoreo y alertas.</span></div>
+        <div class="check"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>Escalable hasta 15–30 kWh.</span></div>
+      </div>
+      <div class="card">
+        <h3>Energy Pro (Avanzado)</h3>
+        <p>Para hogares de mayor consumo y continuidad extendida. Preparado para futuras integraciones (ej. vehículos eléctricos).</p>
+        <div class="check"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>Optimización automática de carga y descarga.</span></div>
+        <div class="check"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>Opciones monofásicas y trifásicas.</span></div>
+        <div class="check"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>Gestión de cargas críticas.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Especificaciones clave</h2>
+    <div class="specs">
+      <div class="spec">
+        <h4>Capacidad</h4>
+        <p>5 kWh por módulo. Escalable hasta 15 kWh por sistema (y hasta 30 kWh con dos sistemas en paralelo).</p>
+      </div>
+      <div class="spec">
+        <h4>Potencia</h4>
+        <p>2,5–5 kW de potencia continua según configuración, con picos de hasta 7 kW (10 s).</p>
+      </div>
+      <div class="spec">
+        <h4>Seguridad y entorno</h4>
+        <p>Química LFP, IP66 para exterior, operación entre –20 °C y +55 °C, bajo ruido (&lt;29 dB).</p>
+      </div>
+    </div>
+    <p class="small" style="margin-top:.8rem">* La autonomía real depende del consumo del hogar y de los equipos que se mantengan conectados durante un corte.</p>
+  </div>
+</section>
+
+<section id="planes">
+  <div class="container">
+    <h2>Planes iniciales (MVP)</h2>
+    <p class="small">Trabajamos con dimensionamiento personalizado. Los valores se cotizan según consumo, ubicación y complejidad de instalación.</p>
+    <div class="pricing">
+      <div class="plan">
+        <h3>Energy One</h3>
+        <p class="price">Consultar</p>
+        <p class="muted">5 kWh • hasta 1,5–2,5 kW</p>
+        <ul>
+          <li>Instalación básica.</li>
+          <li>Conmutación automática.</li>
+          <li>Monitoreo esencial.</li>
+        </ul>
+        <a href="#contacto" class="btn" style="margin-top:.6rem">Quiero este</a>
+      </div>
+      <div class="plan highlight">
+        <h3>Energy Hybrid</h3>
+        <p class="price">Consultar</p>
+        <p class="muted">10 kWh • hasta 5 kW</p>
+        <ul>
+          <li>Listo para integrar paneles solares.</li>
+          <li>Optimización por tarifa y horario.</li>
+          <li>App con analítica de consumo.</li>
+        </ul>
+        <a href="#contacto" class="btn" style="margin-top:.6rem">Cotizar híbrido</a>
+      </div>
+      <div class="plan">
+        <h3>Energy Pro</h3>
+        <p class="price">Consultar</p>
+        <p class="muted">15 kWh • hasta 5 kW (pico 7 kW)</p>
+        <ul>
+          <li>Gestión de cargas críticas.</li>
+          <li>Expansión hasta 30 kWh.</li>
+          <li>Opciones trifásicas.</li>
+        </ul>
+        <a href="#contacto" class="btn" style="margin-top:.6rem">Hablar con ventas</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="container">
+    <h2>Preguntas frecuentes</h2>
+
+    <div class="card">
+      <h3>¿Requiere mantenimiento la batería?</h3>
+      <p>No. Las baterías LFP son selladas, no tienen partes móviles y no consumen combustible. Solo se recomienda una revisión visual anual por parte del instalador.</p>
+    </div>
+
+    <div class="card">
+      <h3>¿Qué pasa si llueve, graniza o hace mucho calor?</h3>
+      <p>La batería cuenta con certificación IP66, preparada para exterior y condiciones climáticas intensas. Si luego sumás paneles solares, están diseñados bajo normas internacionales para resistir granizo y vientos fuertes.</p>
+    </div>
+
+    <div class="card">
+      <h3>¿Qué autonomía voy a tener?</h3>
+      <p>Depende de los consumos conectados. Un módulo de 5 kWh suele cubrir cargas esenciales por varias horas. Si tu hogar tiene mayor demanda, el sistema se dimensiona con más capacidad.</p>
+    </div>
+
+    <div class="card">
+      <h3>¿Hace ruido?</h3>
+      <p>No. Las baterías no tienen motor ni ventilación forzada. Son prácticamente silenciosas, ideales para uso residencial.</p>
+    </div>
+
+    <div class="card">
+      <h3>¿Qué pasa si se corta la luz?</h3>
+      <p>El sistema conmuta automáticamente en milisegundos. Es tan rápido que el Wi‑Fi, la computadora o la TV suelen seguir funcionando sin que lo notes.</p>
+    </div>
+
+    <div class="card">
+      <h3>¿Puedo empezar sin paneles solares?</h3>
+      <p>Sí. Podés comenzar solo con la batería de respaldo y agregar paneles más adelante sin reemplazar el sistema.</p>
+    </div>
+
+    <div class="card">
+      <h3>¿Cuánto espacio ocupa?</h3>
+      <p>El módulo estándar requiere aproximadamente el espacio de un termotanque eléctrico vertical. Puede instalarse en exterior o interior techado, según la recomendación del instalador.</p>
+    </div>
+
+    <div class="card">
+      <h3>¿Puedo usar el sistema para aire acondicionado?</h3>
+      <p>Sí, siempre que la potencia de los equipos esté dentro de los límites del inversor y la batería. Para consumos altos en frío/calor, sugerimos configuraciones Energy Hybrid o Energy Pro.</p>
+    </div>
+
+    <div class="card">
+      <h3>¿Cuánto aumenta la factura al cargar la batería desde la red?</h3>
+      <p>El consumo adicional depende de cuánta energía reponga el sistema. En la mayoría de los casos, el impacto es bajo porque la batería solo repone lo usado durante cortes o picos. Además, puede configurarse para cargar en horarios de tarifa más baja.</p>
+    </div>
+
+    <div class="card">
+      <h3>¿Cuál es la vida útil de la batería?</h3>
+      <p>Las baterías LFP tienen una vida útil típica de 10 a 15 años, con miles de ciclos de carga y descarga. Mantienen un buen nivel de capacidad incluso después de años de uso.</p>
+    </div>
+
+    <div class="card">
+      <h3>¿Puedo llevarme el sistema si me mudo?</h3>
+      <p>Sí. El sistema puede desinstalarse y reinstalarse en la nueva vivienda, siempre mediante un instalador certificado.</p>
+    </div>
+
+    <div class="card">
+      <h3>¿Necesito permisos especiales?</h3>
+      <p>Para la modalidad solo respaldo, generalmente no. Si sumás paneles solares, puede requerirse una habilitación eléctrica o trámite según la normativa local.</p>
+    </div>
+
+    <div class="card">
+      <h3>¿El sistema puede sobrecargarse o ser peligroso?</h3>
+      <p>No. El sistema incluye protecciones contra sobrecarga, sobrecalentamiento y cortocircuito. La química LFP es una de las más seguras del mercado residencial.</p>
+    </div>
+
+    <div class="card">
+      <h3>¿Qué pasa con los consumos altos en verano?</h3>
+      <p>Podemos dimensionar la instalación para que alimente solo cargas críticas (heladera, Wi‑Fi, luces y algunos aires) o aumentar módulos de batería según tu necesidad.</p>
+    </div>
+
+    <div class="card">
+      <h3>¿Cómo se compara el costo total frente a un grupo electrógeno?</h3>
+      <p>A largo plazo, un sistema de baterías suele ser más conveniente: no consume combustible, casi no requiere mantenimiento, no hace ruido y es mucho más cómodo de usar. Además, si sumás solar, podés reducir tu factura de energía.</p>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container cta">
+    <div>
+      <h3>¿Listo para tener energía continua?</h3>
+      <p class="small">Te ayudamos a dimensionar el sistema ideal para tu casa y armamos tu presupuesto en 24–48 horas.</p>
+    </div>
+    <div>
+      <!-- Reemplazar con link real de WhatsApp -->
+      <a class="btn" href="https://wa.me/5491100000000?text=Hola%20Sanbai%2C%20quiero%20cotizar%20un%20sistema%20de%20respaldo" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="container" id="contacto">
+    <h2>Contacto</h2>
+    <div class="card">
+      <form onsubmit="event.preventDefault(); window.location.href='mailto:ventas@sanbai.com.ar?subject=Cotizaci%C3%B3n%20Sanbai%20Energy&body=' + encodeURIComponent(document.getElementById('msg').value)">
+        <label>Nombre<br><input required type="text" name="nombre"></label>
+        <br><br>
+        <label>Email<br><input required type="email" name="email"></label>
+        <br><br>
+        <label>Mensaje<br>
+          <textarea id="msg" rows="5">Hola, quiero cotizar un sistema Sanbai Energy (Energy One / Hybrid / Pro). Consumo aproximado: _____. Ubicación: _____.</textarea>
+        </label>
+        <br><br>
+        <button class="btn" type="submit">Enviar</button>
+      </form>
+    </div>
+    <p class="small" style="margin-top:.8rem">Sanbai Solutions — sanbai.com.ar</p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>© <span id="yr"></span> Sanbai Solutions. Todos los derechos reservados.</div>
+    <div>* Imágenes ilustrativas. Las especificaciones pueden variar según la configuración y disponibilidad local.</div>
+  </div>
+</footer>
+
+<script>document.getElementById('yr').textContent=new Date().getFullYear()</script>
+</body>
+</html>
