@@ -1,0 +1,162 @@
+body {
+    margin: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    color: #222;
+    background: #fff;
+}
+
+/* NAVBAR */
+.navbar {
+    position: fixed;
+    width: 100%;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(8px);
+    z-index: 10;
+    padding: 15px 0;
+}
+.nav-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+.nav-cta {
+    background: #FA6D14;
+    padding: 8px 16px;
+    color: white !important;
+    border-radius: 6px;
+}
+
+/* HERO */
+.hero {
+    height: 90vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+.hero-content {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    color: white;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+}
+.hero-buttons a {
+    margin: 10px;
+}
+.btn-primary {
+    padding: 12px 20px;
+    background: #FA6D14;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+}
+.btn-secondary {
+    padding: 12px 20px;
+    border: 2px solid white;
+    text-decoration: none;
+    color: white;
+    border-radius: 8px;
+}
+
+/* SECCIONES */
+section {
+    padding: 80px 20px;
+}
+
+.beneficio {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.beneficio-img img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.productos {
+    text-align: center;
+    background: #F8F8F8;
+}
+
+.productos-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.card {
+    width: 300px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+}
+.card img {
+    width: 100%;
+}
+
+/* COMPARATIVA */
+.comparativa {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+/* CÓMO FUNCIONA */
+.funciona-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}
+
+/* TESTIMONIAL */
+.testimonial {
+    height: 60vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+.testimonial h2 {
+    color: white;
+    text-shadow: 0 0 20px black;
+}
+
+/* FAQ */
+.faq-item {
+    max-width: 700px;
+    margin: auto;
+    margin-bottom: 20px;
+}
+.faq-q {
+    width: 100%;
+    background: #eee;
+    padding: 15px;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 16px;
+}
+.faq-a {
+    display: none;
+    background: #fafafa;
+    padding: 15px;
+    border-left: 3px solid #FA6D14;
+}
+
+/* CTA FINAL */
+.cta-final {
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 120px 20px;
+    text-shadow: 0 3px 20px black;
+}
