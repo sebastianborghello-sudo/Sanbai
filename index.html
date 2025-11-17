@@ -5,7 +5,6 @@
   <title>Sanbai Energy – PowerHome</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- ESTILOS INLINE -->
   <style>
     :root {
       --orange: #fa6d14;
@@ -80,7 +79,7 @@
       padding: 0.45rem 0.9rem;
       border-radius: 999px;
       background: var(--orange);
-      color: white;
+      color: white !important;
       font-weight: 500;
     }
 
@@ -349,6 +348,7 @@
       justify-content: center;
       text-align: center;
       color: white;
+      padding: 0 1.25rem;
     }
 
     .testimonial::before {
@@ -365,7 +365,6 @@
     .testimonial-content {
       position: relative;
       max-width: 640px;
-      padding: 0 1.25rem;
     }
 
     .testimonial h2 {
@@ -704,13 +703,12 @@
     <div class="section-inner">
       <h2>Autonomía energética para tu hogar</h2>
       <p>Instalación certificada. Soporte local. Seguridad garantizada.</p>
-      <a href="mailto:contacto@sanbai.com.ar" class="btn-primary"
-        >Quiero cotizar mi sistema</a
-      >
+      <a href="mailto:contacto@sanbai.com.ar" class="btn-primary">
+        Quiero cotizar mi sistema
+      </a>
     </div>
   </section>
 
-  <!-- JS FAQ -->
   <script>
     document.querySelectorAll(".faq-q").forEach(function (btn) {
       btn.addEventListener("click", function () {
