@@ -130,26 +130,37 @@
       margin-bottom: 1rem;
     }
 
-    /* HERO */
-    .hero {
-      height: 90vh;
-      min-height: 560px;
-      background-image: linear-gradient(
-          to bottom,
-          rgba(0, 0, 0, 0.35),
-          rgba(0, 0, 0, 0.65)
-        ),
-        url("/assets/herosanbai.png");
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: white;
-      padding-top: 4.5rem;
-    }
+   /* HERO */
+.hero {
+  height: 90vh;
+  min-height: 560px;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.35),
+      rgba(0, 0, 0, 0.65)
+    ),
+    url("/assets/herosanbai.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding-top: 4.5rem;
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+  .hero {
+    height: auto;
+    min-height: 420px;
+    padding: 5rem 1.25rem 4rem; /* agrega espacio vertical */
+    background-position: top center; /* evita cropping raro */
+  }
+}
 
     .hero-content {
       max-width: 640px;
