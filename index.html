@@ -1,234 +1,1205 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
   <title>Continuum — Energía Inteligente para Hogares Premium</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <meta name="description" content="Continuum es el sistema premium de respaldo energético basado en Huawei LUNA. Instalación profesional, autonomía real y soluciones para hogares de alto estándar.">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
+  <!-- Si querés CSS separado, borrá el <style> y usá: -->
+  <!-- <link rel="stylesheet" href="/styles.css" /> -->
+
+  <style>
+    :root {
+      --bg: #05060a;
+      --bg-alt: #0c0e15;
+      --card-bg: #10131f;
+      --accent: #ff7a1a;
+      --accent-soft: rgba(255, 122, 26, 0.12);
+      --accent-border: rgba(255, 122, 26, 0.35);
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.25);
+      --shadow-soft: 0 24px 80px rgba(15, 23, 42, 0.9);
+      --radius-xl: 24px;
+      --radius-pill: 999px;
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to bottom,
+        rgba(15, 23, 42, 0.95),
+        rgba(15, 23, 42, 0.75),
+        transparent
+      );
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .nav {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 18px 20px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 30% 20%, #ffe9d2, #ff7a1a 40%, #7c2d12 100%);
+      box-shadow: 0 12px 40px rgba(248, 113, 22, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 17px;
+      color: #111827;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .logo-title {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .logo-subtitle {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #f97316, #fde68a);
+      transition: width 0.22s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-outline {
+      padding: 7px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-main);
+      background: rgba(15, 23, 42, 0.8);
+      cursor: pointer;
+      transition: background 0.18s ease, border-color 0.18s ease,
+        transform 0.1s ease;
+    }
+
+    .btn-outline:hover {
+      background: rgba(15, 23, 42, 1);
+      border-color: rgba(248, 250, 252, 0.6);
+      transform: translateY(-0.5px);
+    }
+
+    .btn-primary {
+      padding: 9px 18px;
+      border-radius: var(--radius-pill);
+      border: none;
+      background: linear-gradient(135deg, #f97316, #facc15);
+      color: #111827;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 16px 45px rgba(248, 113, 22, 0.6);
+      transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.06);
+      box-shadow: 0 22px 60px rgba(248, 113, 22, 0.75);
+    }
+
+    /* Layout general */
+    main {
+      padding: 24px 16px 72px;
+    }
+
+    .shell {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    /* HERO */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: center;
+      margin-top: 20px;
+      margin-bottom: 56px;
+    }
+
+    .hero-copy {
+      padding-right: 8px;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: var(--radius-pill);
+      padding: 4px 10px 4px 4px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      margin-bottom: 14px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .hero-pill span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #ffedd5, #f97316);
+      box-shadow: 0 0 0 1px rgba(248, 250, 252, 0.65);
+      font-size: 11px;
+      color: #111827;
+      font-weight: 600;
+    }
+
+    .hero-kicker {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .hero-title {
+      font-size: clamp(36px, 5vw, 44px);
+      line-height: 1.05;
+      margin-bottom: 10px;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-title strong {
+      background: linear-gradient(135deg, #f97316, #fde68a);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 420px;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .badge {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.85);
+    }
+
+    .badge-accent {
+      border-color: var(--accent-border);
+      background: var(--accent-soft);
+      color: #fed7aa;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .hero-caption {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .hero-media {
+      position: relative;
+      border-radius: 32px;
+      overflow: hidden;
+      background: radial-gradient(circle at top left, #111827, #020617 70%);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: 0 26px 70px rgba(15, 23, 42, 0.9);
+      min-height: 260px;
+    }
+
+    .hero-media-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.02);
+    }
+
+    .hero-media-gradient {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(248, 113, 22, 0.6), transparent 55%),
+        radial-gradient(circle at bottom, rgba(15, 23, 42, 0.9), transparent 60%);
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .hero-media-label {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      padding: 7px 12px;
+      border-radius: var(--radius-pill);
+      background: rgba(15, 23, 42, 0.86);
+      border: 1px solid rgba(148, 163, 184, 0.65);
+      font-size: 11px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+    }
+
+    .hero-media-label-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.4);
+    }
+
+    /* Secciones */
+
+    section {
+      margin-bottom: 56px;
+    }
+
+    .section-header {
+      margin-bottom: 20px;
+    }
+
+    .section-kicker {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      margin-bottom: 6px;
+    }
+
+    .section-description {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 520px;
+    }
+
+    /* Modelos */
+
+    .models-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .model-card {
+      background: rgba(15, 23, 42, 0.92);
+      border-radius: var(--radius-xl);
+      padding: 16px 14px 16px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 18px 52px rgba(15, 23, 42, 0.8);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .model-label-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+    }
+
+    .model-tag {
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--accent-border);
+      background: var(--accent-soft);
+      color: #fed7aa;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .model-badge-muted {
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--text-muted);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .model-image {
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      background: radial-gradient(circle at top, #020617, #020617 70%);
+      padding: 8px;
+    }
+
+    .model-title {
+      font-size: 16px;
+      margin-bottom: 2px;
+    }
+
+    .model-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .model-list {
+      list-style: none;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .model-list li {
+      margin-bottom: 3px;
+    }
+
+    .model-list li::before {
+      content: "•";
+      margin-right: 6px;
+      color: #f97316;
+    }
+
+    .model-price {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .model-caption {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .model-cta {
+      margin-top: auto;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 7px 11px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.95);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      color: var(--text-main);
+      transition: background 0.14s ease, border-color 0.14s ease, transform 0.08s ease;
+      width: 100%;
+      text-align: center;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(15, 23, 42, 1);
+      border-color: var(--accent-border);
+      transform: translateY(-0.5px);
+    }
+
+    /* Servicio */
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .service-card {
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: var(--radius-xl);
+      padding: 18px 18px 18px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .service-steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .step-card {
+      background: rgba(15, 23, 42, 0.98);
+      border-radius: 18px;
+      padding: 12px 12px 13px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 13px;
+    }
+
+    .step-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .step-list {
+      list-style: none;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .step-list li {
+      margin-bottom: 3px;
+    }
+
+    .step-list li::before {
+      content: "–";
+      margin-right: 4px;
+      color: #f97316;
+    }
+
+    .service-side-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 10px;
+    }
+
+    .service-highlight {
+      background: rgba(15, 23, 42, 0.98);
+      border-radius: var(--radius-xl);
+      padding: 16px;
+      border: 1px dashed rgba(248, 250, 252, 0.35);
+      font-size: 13px;
+    }
+
+    .service-highlight strong {
+      color: #fde68a;
+    }
+
+    /* Por qué Continuum */
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .why-card {
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: 20px;
+      padding: 14px 13px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 13px;
+      box-shadow: 0 16px 48px rgba(15, 23, 42, 0.9);
+    }
+
+    .why-title {
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .why-text {
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
+    /* Formulario */
+
+    .quote-card {
+      background: rgba(15, 23, 42, 0.98);
+      border-radius: 26px;
+      padding: 18px 18px 20px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      max-width: 640px;
+    }
+
+    .quote-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .field-label {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .field-label span {
+      color: #f97316;
+      margin-left: 2px;
+    }
+
+    .field-input,
+    .field-select,
+    .field-textarea {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.98);
+      padding: 8px 10px;
+      font-size: 13px;
+      color: var(--text-main);
+      outline: none;
+      transition: border-color 0.14s ease, box-shadow 0.14s ease, background 0.14s ease;
+    }
+
+    .field-input:focus,
+    .field-select:focus,
+    .field-textarea:focus {
+      border-color: rgba(248, 250, 252, 0.9);
+      box-shadow: 0 0 0 1px rgba(248, 250, 252, 0.6);
+      background: rgba(15, 23, 42, 1);
+    }
+
+    .field-textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .quote-aside {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .quote-aside p:not(:last-child) {
+      margin-bottom: 8px;
+    }
+
+    .quote-aside strong {
+      color: #e5e7eb;
+    }
+
+    .quote-submit {
+      margin-top: 10px;
+    }
+
+    footer {
+      border-top: 1px solid rgba(148, 163, 184, 0.25);
+      padding: 18px 16px 26px;
+      margin-top: 32px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    @media (max-width: 960px) {
+      .hero,
+      .service-grid,
+      .quote-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-media {
+        order: -1;
+      }
+
+      .models-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .service-steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .why-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      main {
+        padding-inline: 14px;
+      }
+
+      .models-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .service-steps {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .why-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        margin-top: 10px;
+      }
+
+      .hero-media {
+        min-height: 220px;
+      }
+    }
+  </style>
 </head>
-
 <body>
-
-<nav class="nav">
-  <div class="nav-inner">
-    <img src="/assets/sanbai-logo.svg" class="logo" alt="Sanbai">
-    <div class="nav-links">
-      <a href="#modelos">Modelos</a>
-      <a href="#servicio">Servicio</a>
-      <a href="#porque">Por qué Continuum</a>
-      <a href="#contacto" class="btn-nav">Cotizar</a>
-    </div>
-  </div>
-</nav>
-
-<header class="hero section ani-fade">
-  <div class="hero-content">
-    <p class="hero-kicker">Backup energético premium</p>
-    <h1 class="hero-title">Continuum<br>Energía sin interrupciones.</h1>
-    <p class="hero-sub">
-      Soluciones de respaldo basadas en Huawei LUNA.  
-      Instalación profesional, experiencia premium y autonomía real de hasta 48 horas
-      para hogares y barrios privados.
-    </p>
-    <div class="hero-cta">
-      <a href="#modelos" class="btn-primary">Ver modelos</a>
-      <a href="#contacto" class="btn-secondary">Cotizar ahora</a>
-    </div>
-    <div class="hero-badges">
-      <span>Huawei LUNA</span>
-      <span>Instalación incluida</span>
-      <span>Autonomía real</span>
-    </div>
-  </div>
-
-  <div class="hero-visual ani-fade">
-    <div class="hero-orbit"></div>
-    <div class="hero-orbit hero-orbit-inner"></div>
-    <div class="hero-core" data-parallax-depth="20">
-      <img src="/assets/hero-battery-placeholder.png" alt="Continuum Battery" id="heroBattery">
-    </div>
-  </div>
-</header>
-
-<div class="divider"></div>
-
-<section id="modelos" class="section ani-fade">
-  <h2 class="section-title">Modelos Continuum</h2>
-  <p class="section-sub">Soluciones modulares Huawei LUNA con instalación profesional incluida en cada propuesta.</p>
-
-  <div class="models-grid">
-
-    <div class="model-card tilt ani-up">
-      <span class="tag tag-reco">Recomendado</span>
-      <img src="/assets/luna10-placeholder.png" class="model-img" alt="Continuum Base 10">
-      <h3>Continuum Base 10</h3>
-      <p class="model-sub">El punto justo entre autonomía y precio.</p>
-      <ul>
-        <li>10 kWh — 2 módulos LUNA</li>
-        <li>12–24 h de autonomía con cargas críticas</li>
-        <li>Ideal para casas medianas en barrios privados</li>
-        <li>Instalación profesional incluida</li>
-      </ul>
-      <div class="price-row">
-        <div class="price">USD 8.399</div>
-        <div class="price-note">Equipo + instalación completa</div>
+  <header>
+    <div class="nav shell">
+      <div class="nav-left">
+        <div class="logo-mark">C</div>
+        <div class="logo-text">
+          <div class="logo-title">Continuum</div>
+          <div class="logo-subtitle">Sanbai Energy</div>
+        </div>
       </div>
-      <a href="#contacto" class="btn-outline">Cotizar Base 10</a>
-    </div>
-
-    <div class="model-card tilt ani-up">
-      <span class="tag tag-premium">Premium</span>
-      <img src="/assets/luna15-placeholder.png" class="model-img" alt="Continuum Base 15">
-      <h3>Continuum Base 15</h3>
-      <p class="model-sub">Para quienes no quieren pensar en cortes.</p>
-      <ul>
-        <li>15 kWh — 3 módulos LUNA</li>
-        <li>14–30 h sin aire o 8–16 h con climatización limitada</li>
-        <li>Casas grandes de 200–350 m²</li>
-        <li>Instalación profesional incluida</li>
-      </ul>
-      <div class="price-row">
-        <div class="price">USD 10.199</div>
-        <div class="price-note">Equipo + instalación completa</div>
+      <nav class="nav-links">
+        <a href="#modelos">Modelos</a>
+        <a href="#servicio">Servicio</a>
+        <a href="#porque">Por qué Continuum</a>
+        <a href="#cotizar">Cotizar</a>
+      </nav>
+      <div class="nav-cta">
+        <button class="btn-outline" onclick="document.getElementById('servicio').scrollIntoView({behavior:'smooth'})">
+          Servicio
+        </button>
+        <button class="btn-primary" onclick="document.getElementById('cotizar').scrollIntoView({behavior:'smooth'})">
+          Cotizar ahora
+        </button>
       </div>
-      <a href="#contacto" class="btn-outline">Cotizar Base 15</a>
     </div>
+  </header>
 
-    <div class="model-card tilt ani-up">
-      <img src="/assets/luna5-placeholder.png" class="model-img" alt="Continuum Base 5">
-      <h3>Continuum Base 5</h3>
-      <p class="model-sub">Entrada a la energía inteligente.</p>
-      <ul>
-        <li>5 kWh — 1 módulo LUNA</li>
-        <li>6–12 h de respaldo para cargas esenciales</li>
-        <li>Para casas chicas o clientes que quieren comenzar</li>
-        <li>Instalación profesional incluida</li>
-      </ul>
-      <div class="price-row">
-        <div class="price">USD 6.500</div>
-        <div class="price-note">Equipo + instalación completa</div>
-      </div>
-      <a href="#contacto" class="btn-outline">Cotizar Base 5</a>
+  <main>
+    <div class="shell">
+      <!-- HERO -->
+      <section class="hero" id="top">
+        <div class="hero-copy">
+          <div class="hero-pill">
+            <span>◎</span>
+            Backup energético premium
+          </div>
+          <div class="hero-kicker">Continuum</div>
+          <h1 class="hero-title">
+            Energía sin interrupciones <strong>para hogares premium</strong>.
+          </h1>
+          <p class="hero-subtitle">
+            Soluciones de respaldo basadas en Huawei LUNA. Instalación profesional,
+            experiencia premium y autonomía real de hasta 48 horas para hogares y barrios privados.
+          </p>
+
+          <div class="hero-badges">
+            <div class="badge badge-accent">Huawei LUNA</div>
+            <div class="badge">Instalación incluida</div>
+            <div class="badge">Autonomía real</div>
+          </div>
+
+          <div class="hero-actions">
+            <button class="btn-primary" onclick="document.getElementById('modelos').scrollIntoView({behavior:'smooth'})">
+              Ver modelos
+            </button>
+            <button class="btn-secondary" onclick="document.getElementById('cotizar').scrollIntoView({behavior:'smooth'})">
+              Cotizar ahora
+            </button>
+          </div>
+          <p class="hero-caption">
+            Pensado para cortes frecuentes, barrios privados y casas que no pueden quedarse sin energía.
+          </p>
+        </div>
+
+        <div class="hero-media">
+          <div class="hero-media-inner">
+            <!-- Acá poné tu imagen actual de la batería -->
+            <!-- Ejemplo: <img src="/img/continuum-battery.jpg" alt="Continuum - Sistema de respaldo basado en Huawei LUNA"> -->
+            <div class="hero-media-gradient"></div>
+          </div>
+          <div class="hero-media-label">
+            <span class="hero-media-label-dot"></span>
+            Respaldo automático ante cortes de red
+          </div>
+        </div>
+      </section>
+
+      <!-- MODELOS -->
+      <section id="modelos">
+        <div class="section-header">
+          <div class="section-kicker">Modelos Continuum</div>
+          <h2 class="section-title">Soluciones modulares Huawei LUNA</h2>
+          <p class="section-description">
+            Todas las opciones incluyen equipo, conversor y
+            instalación profesional completa. Elegí el nivel de autonomía
+            según el tamaño de tu casa y lo que quieras respaldar.
+          </p>
+        </div>
+
+        <div class="models-grid">
+          <!-- Base 10 -->
+          <article class="model-card">
+            <div class="model-label-row">
+              <span class="model-tag">Recomendado</span>
+              <span class="model-badge-muted">Casas medianas</span>
+            </div>
+            <div class="model-image">
+              <!-- Reemplazar por imagen real -->
+              <!-- <img src="/img/base10.png" alt="Continuum Base 10"> -->
+            </div>
+            <h3 class="model-title">Continuum Base 10</h3>
+            <p class="model-subtitle">El punto justo entre autonomía y precio.</p>
+            <ul class="model-list">
+              <li>10 kWh — 2 módulos LUNA</li>
+              <li>12–24 h de autonomía con cargas críticas</li>
+              <li>Ideal para casas medianas en barrios privados</li>
+              <li>Instalación profesional incluida</li>
+            </ul>
+            <div class="model-price">USD 8.399</div>
+            <div class="model-caption">Equipo + instalación completa</div>
+            <div class="model-cta">
+              <button class="btn-secondary" onclick="document.getElementById('cotizar').scrollIntoView({behavior:'smooth'})">
+                Cotizar Base 10
+              </button>
+            </div>
+          </article>
+
+          <!-- Base 15 -->
+          <article class="model-card">
+            <div class="model-label-row">
+              <span class="model-tag">Premium</span>
+              <span class="model-badge-muted">Casas grandes</span>
+            </div>
+            <div class="model-image">
+              <!-- <img src="/img/base15.png" alt="Continuum Base 15"> -->
+            </div>
+            <h3 class="model-title">Continuum Base 15</h3>
+            <p class="model-subtitle">Para quienes no quieren pensar en cortes.</p>
+            <ul class="model-list">
+              <li>15 kWh — 3 módulos LUNA</li>
+              <li>14–30 h sin aire o 8–16 h con climatización limitada</li>
+              <li>Casas grandes de 200–350 m²</li>
+              <li>Instalación profesional incluida</li>
+            </ul>
+            <div class="model-price">USD 10.199</div>
+            <div class="model-caption">Equipo + instalación completa</div>
+            <div class="model-cta">
+              <button class="btn-secondary" onclick="document.getElementById('cotizar').scrollIntoView({behavior:'smooth'})">
+                Cotizar Base 15
+              </button>
+            </div>
+          </article>
+
+          <!-- Base 5 -->
+          <article class="model-card">
+            <div class="model-label-row">
+              <span class="model-tag">Entrada</span>
+              <span class="model-badge-muted">Casas chicas</span>
+            </div>
+            <div class="model-image">
+              <!-- <img src="/img/base5.png" alt="Continuum Base 5"> -->
+            </div>
+            <h3 class="model-title">Continuum Base 5</h3>
+            <p class="model-subtitle">Entrada a la energía inteligente.</p>
+            <ul class="model-list">
+              <li>5 kWh — 1 módulo LUNA</li>
+              <li>6–12 h de respaldo para cargas esenciales</li>
+              <li>Para casas chicas o clientes que quieren comenzar</li>
+              <li>Instalación profesional incluida</li>
+            </ul>
+            <div class="model-price">USD 6.500</div>
+            <div class="model-caption">Equipo + instalación completa</div>
+            <div class="model-cta">
+              <button class="btn-secondary" onclick="document.getElementById('cotizar').scrollIntoView({behavior:'smooth'})">
+                Cotizar Base 5
+              </button>
+            </div>
+          </article>
+
+          <!-- Base 30+ -->
+          <article class="model-card">
+            <div class="model-label-row">
+              <span class="model-tag">Nuevo</span>
+              <span class="model-badge-muted">Alta demanda</span>
+            </div>
+            <div class="model-image">
+              <!-- <img src="/img/base30.png" alt="Continuum Base 30+"> -->
+            </div>
+            <h3 class="model-title">Continuum Base 30+</h3>
+            <p class="model-subtitle">
+              Autonomía extendida para casas grandes y oficinas boutique.
+            </p>
+            <ul class="model-list">
+              <li>30 kWh — 6 módulos LUNA</li>
+              <li>20–48 h de autonomía según consumo</li>
+              <li>Ideal para proyectos de alta demanda</li>
+              <li>Instalación profesional incluida</li>
+            </ul>
+            <div class="model-price">USD 16.499</div>
+            <div class="model-caption">Equipo + instalación completa</div>
+            <div class="model-cta">
+              <button class="btn-secondary" onclick="document.getElementById('cotizar').scrollIntoView({behavior:'smooth'})">
+                Cotizar Base 30+
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- SERVICIO -->
+      <section id="servicio">
+        <div class="section-header">
+          <div class="section-kicker">Servicio profesional end-to-end</div>
+          <h2 class="section-title">No vendemos equipos, diseñamos experiencias completas</h2>
+          <p class="section-description">
+            Pensado para hogares de alto estándar que buscan una experiencia completa,
+            no solo un equipo. Desde el relevamiento inicial hasta la prueba final de corte
+            frente al cliente.
+          </p>
+        </div>
+
+        <div class="service-grid">
+          <div class="service-card">
+            <div class="service-steps">
+              <div class="step-card">
+                <div class="step-title">Evaluación previa</div>
+                <ul class="step-list">
+                  <li>Diagnóstico en sitio antes de avanzar</li>
+                  <li>Relevamiento de tablero e instalación existente</li>
+                  <li>Identificación de cargas críticas</li>
+                  <li>Cálculo de autonomías reales según consumo</li>
+                  <li>Informe con propuesta y ubicación recomendada</li>
+                </ul>
+              </div>
+
+              <div class="step-card">
+                <div class="step-title">Instalación</div>
+                <ul class="step-list">
+                  <li>Equipo certificado y terminaciones cuidadas</li>
+                  <li>Protección de áreas de trabajo y zonas de paso</li>
+                  <li>Canalización discreta o embutida según el ambiente</li>
+                  <li>Etiquetado claro del tablero de respaldo</li>
+                  <li>Prueba de corte real frente al cliente</li>
+                </ul>
+              </div>
+
+              <div class="step-card">
+                <div class="step-title">Puesta en marcha</div>
+                <ul class="step-list">
+                  <li>Sistema listo y documentación clara</li>
+                  <li>Capacitación breve sobre el funcionamiento diario</li>
+                  <li>Informe de puesta en marcha con fotos y autonomías</li>
+                  <li>Opcional: plan de mantenimiento anual</li>
+                </ul>
+              </div>
+            </div>
+
+            <p class="service-side-note">
+              Nuestro objetivo es que la instalación se integre a la casa
+              con el mismo nivel de detalle que un proyecto de arquitectura interior.
+            </p>
+          </div>
+
+          <div class="service-highlight">
+            <p>
+              <strong>Servicio “guante blanco”</strong> para un target ABC1:
+              agenda coordinada, tiempos claros, mínimo impacto durante la obra
+              y una experiencia pensada para clientes exigentes que esperan
+              un estándar similar al de marcas como Apple o Tesla.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- POR QUÉ CONTINUUM -->
+      <section id="porque">
+        <div class="section-header">
+          <div class="section-kicker">¿Por qué elegir Continuum?</div>
+          <h2 class="section-title">Un producto, un servicio, un equipo detrás</h2>
+          <p class="section-description">
+            Continuum combina tecnología Huawei LUNA con una implementación
+            profesional de alto nivel. No es solo hardware, es una solución integral.
+          </p>
+        </div>
+
+        <div class="why-grid">
+          <div class="why-card">
+            <div class="why-title">Basado en Huawei LUNA</div>
+            <p class="why-text">
+              Tecnología de respaldo probada a nivel mundial, con módulos
+              escalables y gestión inteligente de energía.
+            </p>
+          </div>
+          <div class="why-card">
+            <div class="why-title">Instalación profesional</div>
+            <p class="why-text">
+              Equipo especializado en energía residencial y proyectos
+              de alta exigencia, con foco en detalle y seguridad.
+            </p>
+          </div>
+          <div class="why-card">
+            <div class="why-title">Autonomía real medida</div>
+            <p class="why-text">
+              Dimensionamos la solución en base a tus consumos y cargas críticas,
+              no solo a valores teóricos de catálogo.
+            </p>
+          </div>
+          <div class="why-card">
+            <div class="why-title">Funcionamiento silencioso</div>
+            <p class="why-text">
+              Sin ruido, sin olor y sin combustible. Respaldo totalmente silencioso
+              y limpio dentro de tu casa.
+            </p>
+          </div>
+          <div class="why-card">
+            <div class="why-title">Modular y escalable</div>
+            <p class="why-text">
+              Podés empezar con un modelo base e ir ampliando módulos a medida
+              que tus necesidades crecen.
+            </p>
+          </div>
+          <div class="why-card">
+            <div class="why-title">Soporte y acompañamiento</div>
+            <p class="why-text">
+              Acompañamos el proyecto de punta a punta, con soporte directo
+              y seguimiento post instalación.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- COTIZAR -->
+      <section id="cotizar">
+        <div class="section-header">
+          <div class="section-kicker">Solicitar cotización</div>
+          <h2 class="section-title">Contanos cómo es tu casa y te respondemos en menos de 24 horas</h2>
+          <p class="section-description">
+            Completá el formulario con algunos datos básicos. Te acercamos
+            una primera propuesta y, si es necesario, coordinamos una visita
+            técnica para ajustar la solución.
+          </p>
+        </div>
+
+        <div class="quote-card">
+          <form
+            name="continuum-quote"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+          >
+            <input type="hidden" name="form-name" value="continuum-quote" />
+            <p style="display:none;">
+              <label>
+                No completar:
+                <input name="bot-field" />
+              </label>
+            </p>
+
+            <div class="quote-grid">
+              <div>
+                <div class="field-group">
+                  <label class="field-label">
+                    Nombre y apellido <span>*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="nombre"
+                    class="field-input"
+                    required
+                  />
+                </div>
+
+                <div class="field-group">
+                  <label class="field-label">
+                    Email <span>*</span>
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    class="field-input"
+                    required
+                  />
+                </div>
+
+                <div class="field-group">
+                  <label class="field-label">
+                    Modelo de interés
+                  </label>
+                  <select name="modelo" class="field-select">
+                    <option value="">Todavía no lo tengo definido</option>
+                    <option>Continuum Base 5</option>
+                    <option>Continuum Base 10</option>
+                    <option>Continuum Base 15</option>
+                    <option>Continuum Base 30+</option>
+                  </select>
+                </div>
+
+                <div class="field-group">
+                  <label class="field-label">
+                    Mensaje
+                  </label>
+                  <textarea
+                    name="mensaje"
+                    class="field-textarea"
+                    placeholder="Contanos brevemente el tamaño de tu casa (m²), barrio o zona y qué cargas te gustaría respaldar (heladeras, bombas, iluminación, aire acondicionado, etc.)."
+                  ></textarea>
+                </div>
+              </div>
+
+              <div class="quote-aside">
+                <p>
+                  <strong>¿Qué hacemos con estos datos?</strong><br />
+                  Solo los usamos para preparar tu propuesta y contactarte.
+                  No compartimos esta información con terceros.
+                </p>
+                <p>
+                  En general podemos estimar una configuración inicial a partir
+                  de tres datos: tamaño de la casa, tipo de instalación y qué
+                  querés que siga funcionando durante un corte.
+                </p>
+                <p>
+                  Si lo preferís, también podemos coordinar directamente
+                  una visita técnica para evaluar la instalación en sitio.
+                </p>
+              </div>
+            </div>
+
+            <div class="quote-submit">
+              <button type="submit" class="btn-primary">
+                Enviar solicitud
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
     </div>
+  </main>
 
-    <div class="model-card tilt ani-up">
-      <span class="tag tag-premium">Nuevo</span>
-      <img src="/assets/luna30-placeholder.png" class="model-img" alt="Continuum Base 30+">
-      <h3>Continuum Base 30+</h3>
-      <p class="model-sub">Autonomía extendida para casas grandes y oficinas boutique.</p>
-      <ul>
-        <li>30 kWh — 6 módulos LUNA</li>
-        <li>20–48 h de autonomía según consumo</li>
-        <li>Ideal para proyectos de alta demanda</li>
-        <li>Instalación profesional incluida</li>
-      </ul>
-      <div class="price-row">
-        <div class="price">USD 16.499</div>
-        <div class="price-note">Equipo + instalación completa</div>
-      </div>
-      <a href="#contacto" class="btn-outline">Cotizar Base 30+</a>
+  <footer>
+    <div class="footer-inner">
+      <div>© 2025 Sanbai Energy — Energía inteligente para hogares premium.</div>
+      <div>Continuum · Soluciones de respaldo basadas en Huawei LUNA</div>
     </div>
-
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<section id="servicio" class="section dark-block ani-fade">
-  <h2 class="section-title">Servicio Profesional End-to-End</h2>
-  <p class="section-sub">Pensado para hogares de alto estándar que buscan una experiencia completa, no solo un equipo.</p>
-
-  <div class="service-steps">
-
-    <div class="step tilt ani-up">
-      <h3>Evaluación previa</h3>
-      <p class="step-sub">Diagnóstico en sitio antes de avanzar.</p>
-      <ul>
-        <li>Relevamiento de tablero e instalación existente</li>
-        <li>Identificación de cargas críticas</li>
-        <li>Cálculo de autonomías reales según tu consumo</li>
-        <li>Informe con propuesta y ubicación recomendada</li>
-      </ul>
-    </div>
-
-    <div class="step tilt ani-up">
-      <h3>Instalación</h3>
-      <p class="step-sub">Equipo certificado y terminaciones cuidadas.</p>
-      <ul>
-        <li>Protección de áreas de trabajo y zonas de paso</li>
-        <li>Canalización discreta o embutida según el ambiente</li>
-        <li>Etiquetado claro del tablero de respaldo</li>
-        <li>Prueba de corte real frente al cliente</li>
-      </ul>
-    </div>
-
-    <div class="step tilt ani-up">
-      <h3>Puesta en marcha</h3>
-      <p class="step-sub">Sistema listo y documentación clara.</p>
-      <ul>
-        <li>Capacitación breve sobre el funcionamiento diario</li>
-        <li>Informe de puesta en marcha con fotos y autonomías</li>
-        <li>Opcional: plan de mantenimiento anual</li>
-      </ul>
-    </div>
-
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<section id="porque" class="section ani-fade">
-  <h2 class="section-title">¿Por qué elegir Continuum?</h2>
-  <p class="section-sub">Una solución integral de energía, pensada como producto y como servicio.</p>
-
-  <div class="benefits">
-    <div class="benefit tilt ani-up">Basado en Huawei LUNA</div>
-    <div class="benefit tilt ani-up">Instalación profesional</div>
-    <div class="benefit tilt ani-up">Autonomía real medida</div>
-    <div class="benefit tilt ani-up">Funcionamiento silencioso</div>
-    <div class="benefit tilt ani-up">Modular y escalable</div>
-    <div class="benefit tilt ani-up">Soporte y acompañamiento</div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<section id="contacto" class="section dark-block ani-fade">
-  <h2 class="section-title">Solicitar Cotización</h2>
-  <p class="section-sub">Compartinos algunos datos y te respondemos en menos de 24 horas.</p>
-
-  <form name="contact" method="POST" data-netlify="true" class="contact-form">
-    <input type="hidden" name="form-name" value="contact">
-
-    <label>Nombre</label>
-    <input name="name" required>
-
-    <label>Email</label>
-    <input name="email" type="email" required>
-
-    <label>Modelo de interés</label>
-    <select name="model">
-      <option>Continuum Base 10</option>
-      <option>Continuum Base 15</option>
-      <option>Continuum Base 5</option>
-      <option>Continuum Base 30+</option>
-    </select>
-
-    <label>Mensaje</label>
-    <textarea name="message" placeholder="Ej: tipo de vivienda, ubicación, si ya tenés grupo electrógeno, etc."></textarea>
-
-    <button type="submit" class="btn-primary">Enviar</button>
-  </form>
-</section>
-
-<footer class="footer">
-  © 2025 Sanbai Energy — Energía inteligente para hogares premium.
-</footer>
-
-<script src="/animations.js"></script>
+  </footer>
 </body>
 </html>
 
