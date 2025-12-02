@@ -1,1 +1,148 @@
-/* styles */
+/* Reset básico + tipografía */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: radial-gradient(circle at top, #1f2937 0, #050814 40%, #020617 100%);
+  color: #e5e7eb;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Contenedores base */
+.section {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 96px 20px 80px;
+}
+
+.section-title {
+  font-size: 2.3rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 12px;
+}
+
+.section-sub {
+  text-align: center;
+  color: #9ca3af;
+  margin: 0 0 40px;
+  font-size: 0.98rem;
+}
+
+/* NAV */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(18px);
+  background: linear-gradient(to bottom, rgba(3,7,18,0.92), rgba(3,7,18,0.7), transparent);
+  border-bottom: 1px solid rgba(55,65,81,0.4);
+}
+
+.nav-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 28px;
+  object-fit: contain;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 0.9rem;
+}
+
+.nav a {
+  color: #e5e7eb;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #f97316, #fb923c);
+  transition: width 0.2s ease;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+.btn-nav {
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(249,115,22,0.7);
+  color: #f97316;
+  font-weight: 500;
+}
+
+.btn-nav:hover {
+  background: radial-gradient(circle at top, rgba(249,115,22,0.18), transparent);
+}
+
+/* HERO */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 48px;
+  padding-top: 120px;
+}
+
+.hero-content {
+  max-width: 560px;
+}
+
+.hero-title {
+  font-size: clamp(2.6rem, 3vw, 3.2rem);
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  margin: 0 0 18px;
+}
+
+.hero-sub {
+  font-size: 0.98rem;
+  line-height: 1.5;
+  color: #9ca3af;
+  margin: 0 0 28px;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.hero-image {
+  justify-self: center;
+  max-width: 360px;
+  border-radius: 24px;
+  padding: 12px;
+  background: radial-gradient(circle at top left, rgba(129,140,248,0.26), transparent 60%),
+              radial-gradient(circle at bottom right, rgba(248,113,113,0.22), transparent 60%),
+              linear-gradient(140deg, #020617, #020617);
+  box-shad
