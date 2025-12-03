@@ -472,6 +472,126 @@ a {
 .contact-form button {
   margin-top: 14px;
 }
+/* -------------------------------------------------------
+   INFO: CÓMO FUNCIONA + COMPARACIÓN
+------------------------------------------------------- */
+
+.info-grid {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.info-main .info-list {
+  margin-top: 18px;
+  list-style: none;
+  font-size: 0.92rem;
+  color: #d1d5db;
+}
+
+.info-main .info-list li + li {
+  margin-top: 6px;
+}
+
+.info-side-title {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #9ca3af;
+  margin-bottom: 12px;
+}
+
+.info-card {
+  border-radius: 18px;
+  border: 1px solid rgba(75,85,99,0.5);
+  background: radial-gradient(circle at top, rgba(15,23,42,0.9), rgba(3,7,18,0.95));
+  padding: 16px 18px;
+  font-size: 0.9rem;
+  color: #e5e7eb;
+}
+
+.info-card + .info-card {
+  margin-top: 10px;
+}
+
+.info-card h4 {
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+}
+
+.info-card ul {
+  list-style: none;
+  color: #cbd5f5;
+}
+
+.info-card ul li + li {
+  margin-top: 4px;
+}
+/* -------------------------------------------------------
+   FAQ
+------------------------------------------------------- */
+
+.faq-list {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.faq-item {
+  border-radius: 14px;
+  border: 1px solid rgba(55,65,81,0.8);
+  background: rgba(15,23,42,0.9);
+  padding: 10px 14px;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.faq-item[open] {
+  border-color: rgba(248,113,22,0.85);
+  background: radial-gradient(circle at top, rgba(15,23,42,0.95), rgba(3,7,18,0.98));
+}
+
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+/* iconito "›" via pseudo-element */
+.faq-item summary::after {
+  content: "›";
+  font-size: 1.1rem;
+  color: #9ca3af;
+  transform: translateY(1px) rotate(90deg);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.faq-item[open] summary::after {
+  transform: translateY(1px) rotate(270deg);
+  color: #f97316;
+}
+
+.faq-item p {
+  margin-top: 8px;
+  font-size: 0.88rem;
+  color: #cbd5e1;
+}
+
 
 /* -------------------------------------------------------
    FOOTER
@@ -514,6 +634,12 @@ footer,
   .models-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+   @media (max-width: 960px) {
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 
   .service-steps {
     grid-template-columns: repeat(2, minmax(0, 1fr));
